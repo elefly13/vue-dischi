@@ -31,6 +31,7 @@ export default {
     h5 {
       color:$terzo;
       font-weight: 900;
+      text-transform: uppercase;
     }
     p {
       color: $quarto;
