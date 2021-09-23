@@ -3,15 +3,16 @@
   <div class="logo">
     <img src="https://www.freepnglogos.com/uploads/spotify-logo-png/file-spotify-logo-png-4.png" alt="Logo Spotify">
   </div>
-
-  <select v-model="option" v-on="$emit('search', inputOption)" class="select">
-  <option selected>Seleziona un genere</option>
-  <option value="Rock">Rock</option>
-  <option value="Pop">Pop</option>
-  <option value="Jazz">Jazz</option>
-  <option value="Metal">Metal</option>
-</select>
-
+  <label >Seleziona un genere
+    <select v-model="inputOption" @change="$emit('search', inputOption)" class="select" >
+      <!-- <option v-for="(opzione, index)in opzioni" :key="index">{{ opzione[index] }}</option> -->
+      <option >Seleziona un genere</option>
+      <option >Rock</option>
+      <option >Pop</option>
+      <option>Jazz</option>
+      <option >Metal</option>
+    </select>
+  </label>
 </div>
 </template>
 
@@ -20,7 +21,13 @@ export default {
   name: 'Header',
   data() {
     return {
-      inputOption: ""
+      inputOption: "",
+      // opzioni: [
+      //   "Rock",
+      //   "Pop",
+      //   "Jazz",
+      //   "Metal"
+      // ],
     }
   }
     
@@ -34,6 +41,7 @@ export default {
 .box-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 80px;
   background-color:$primo;
@@ -47,6 +55,10 @@ export default {
           width: 100%;
           
         }
+    }
+    label {
+      color: $quarto;
+      
     }
     
 }

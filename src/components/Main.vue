@@ -2,7 +2,7 @@
 <div>
   <div class="container py-5">
     <div v-if="!loading" class="row gx-5">
-      <div v-for="(disco, index) in dischiList" :key="index" class="col-6 col-md-4 col-lg-2 m-3">
+      <div v-for="(disco, index) in filtraDischiList" :key="index" class="col-6 col-md-4 col-lg-2 m-3">
        <MainCard :key="index" :info="disco"/>
       </div>
     </div>
@@ -22,6 +22,7 @@ export default {
     MainCard,
     Loader
   },
+  props:[ "genere"],
   data() {
     return {
       APIUrl: 'https://flynn.boolean.careers/exercises/api/array/music',
@@ -30,9 +31,13 @@ export default {
       
     }
   },
+
+  
   created() {
     this.getDischi();
   },
+
+  
   methods: {
     getDischi() {
       axios
@@ -40,8 +45,8 @@ export default {
           .then( resp => {
             // console.log(resp.data);
             this.dischiList = resp.data.response;
-             setTimeout( () => {this.loading = false; }, 5000);
-            // this.loading = false;
+            //  setTimeout( () => {this.loading = false; }, 5000);
+            this.loading = false;
             
           })
           .catch( err => {
@@ -49,7 +54,20 @@ export default {
           })
           
     }
-  }
+  },
+  computed: {
+    filtraDischiList() {
+        if (this.genere === "Seleziona un genere") {
+          return this.dischiList;
+        }
+        let dischiScelti = this.dischiList.filter( item => {
+          return item.genre.includes(this.genere);
+        })
+
+        return dischiScelti;
+      }
+    }
+  
 
 }  
 

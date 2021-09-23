@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="selectOption"/>
-    <Main/>
+    <Main :genere="opzioneSelezionata"/>
   </div>
 </template>
 
@@ -19,11 +19,15 @@ export default {
   data() {
     return {
       opzioneSelezionata: "",
+
     }
   },
   methods: {
-    selectOption(opzioneSelezionata) {
-      console.log(opzioneSelezionata);
+    selectOption(scelta) {
+      console.log(scelta)
+      this.opzioneSelezionata = scelta;
+
+      
     }
   }
 
