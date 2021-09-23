@@ -3,7 +3,7 @@
   <div class="container py-5">
     <div v-if="!loading" class="row gx-5">
       <div v-for="(disco, index) in dischiList" :key="index" class="col-6 col-md-4 col-lg-2 m-3">
-       <MainCard :info="disco"/>
+       <MainCard :key="index" :info="disco"/>
       </div>
     </div>
     <Loader v-else />

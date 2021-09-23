@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header @search="selectOption"/>
     <Main/>
   </div>
 </template>
@@ -11,10 +11,22 @@ import Header from './components/Header.vue'
 
 export default {
   name: 'App',
+  
   components: {
     Main,
     Header
+  },
+  data() {
+    return {
+      opzioneSelezionata: "",
+    }
+  },
+  methods: {
+    selectOption(opzioneSelezionata) {
+      console.log(opzioneSelezionata);
+    }
   }
+
 }
 </script>
 
